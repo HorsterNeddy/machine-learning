@@ -105,9 +105,9 @@ def main():
     # Prepare user input data
     user_data = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
 
-    Train the model
+     Train the model
    # model = joblib.load('CVD_prediction_model')
-    train_model()
+     train_model()
 
     # Prediction button
     if st.button("Predict"):
