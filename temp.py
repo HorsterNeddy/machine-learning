@@ -107,7 +107,7 @@ def main():
 
     # Train the model
    # model = joblib.load('CVD_prediction_model')
-     train_model()
+    train_model()
 
     # Prediction button
     if st.button("Predict"):
