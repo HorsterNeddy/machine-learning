@@ -1,18 +1,40 @@
 import streamlit as st
-#import pandas as pd
-#import numpy as np
-#from sklearn.ensemble import RandomForestClassifier
-#from sklearn.preprocessing import StandardScaler
-#from sklearn.model_selection import train_test_split
-#from sklearn.metrics import accuracy_score
-import joblib
+import pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
 
 
 #@st.cache
+url = 'https://raw.githubusercontent.com/jbrownlee/Datasets/master/heart-disease.csv'
+df = pd.read_csv(url, header=None)
 
-model = joblib.load('CVD_prediction_model')
-#joblib.dump(model,'CVD_prediction_model')
+# Column names for dataset, assuming it is a well-known heart disease dataset
+df.columns = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 
+              'exang', 'oldpeak', 'slope', 'ca', 'thal', 'target']
 
+# Split dataset into features and target variable
+X = df.drop('target', axis=1)
+y = df['target']
+
+# Split into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Standardize the data
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Train a Random Forest model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Test the model accuracy
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
 
 # Function to predict heart disease likelihood
 def predict_cardiovascular_disease(model, user_data):
@@ -83,9 +105,9 @@ def main():
     # Prepare user input data
     user_data = [age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal]
 
-    # Train the model
-    model = joblib.load('CVD_prediction_model')
-    #train_model()
+    Train the model
+   # model = joblib.load('CVD_prediction_model')
+    train_model()
 
     # Prediction button
     if st.button("Predict"):
