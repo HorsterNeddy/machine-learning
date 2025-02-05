@@ -11,7 +11,7 @@ import joblib
 #@st.cache
 
 model = joblib.load('CVD_prediction_model')
-joblib.dump(model,'CVD_prediction_model')
+#joblib.dump(model,'CVD_prediction_model')
 
 
 # Function to predict heart disease likelihood
