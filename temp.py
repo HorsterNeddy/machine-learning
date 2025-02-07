@@ -61,7 +61,6 @@ def main():
     """, unsafe_allow_html=True)
     
     st.title("Cardiovascular Disease Prediction")
-    st.subheader("####By: Horster Lifalaza")
     st.subheader("Enter your details:")
     
     # User input fields
@@ -111,6 +110,7 @@ def main():
             <div style="background-color:{color}; padding: 10px; font-size: 20px; text-align: center;">
                 <strong>Prediction: {result}</strong><br>
                 Likelihood: {probability:.2f}%
+        st.subheader("By: Horster Lifalaza")        
             </div>
         """, unsafe_allow_html=True)
 
