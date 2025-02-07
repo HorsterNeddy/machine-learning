@@ -110,9 +110,10 @@ def main():
             <div style="background-color:{color}; padding: 10px; font-size: 20px; text-align: center;">
                 <strong>Prediction: {result}</strong><br>
                 Likelihood: {probability:.2f}%
-        st.subheader("By: Horster Lifalaza")        
+               
             </div>
         """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
+st.subheader("By: Horster Lifalaza") 
