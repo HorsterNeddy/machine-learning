@@ -61,7 +61,7 @@ def main():
     """, unsafe_allow_html=True)
     
     st.title("Cardiovascular Disease Prediction")
-    st.subheader("By: Horster Lifalaza")
+    st.subheader("####By: Horster Lifalaza")
     st.subheader("Enter your details:")
     
     # User input fields
